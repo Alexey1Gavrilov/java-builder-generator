@@ -1,6 +1,7 @@
 package buildit;
 
 import java.net.URI;
+import java.util.Arrays;
 
 /**
  * Created by agavrilov on 24/11/14.
@@ -15,6 +16,7 @@ public class Example {
 
         final Foo foo2 = new FooBuilder(foo)
                 .string("abc")
+                .list(Arrays.asList("A", "B"))
                 .build();
 
         System.out.println(foo + " " + foo2);

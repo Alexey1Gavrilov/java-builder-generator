@@ -1,6 +1,7 @@
 package buildit;
 
 import java.net.URI;
+import java.util.List;
 
 /**
  * Created by agavrilov on 24/11/14.
@@ -10,6 +11,7 @@ public abstract class Foo {
     public abstract int number();
     public abstract String string();
     public abstract URI uri();
+    public abstract List<String> list();
 
     protected Foo(final int number, final String string, final URI uri) {
         // validate input

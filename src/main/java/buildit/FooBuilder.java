@@ -1,11 +1,14 @@
 package buildit;
 
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by agavrilov on 24/11/14.
  */
 public class FooBuilder {
+    private List<String> list;
     private int number;
     private String string;
     private URI uri;
@@ -15,13 +18,19 @@ public class FooBuilder {
         private final int number;
         private final String string;
         private final URI uri;
+        private final List<String> list;
 
         // @JsonCreator
-        private FooImpl(final int number, final String string, final URI uri) {
+        private FooImpl(
+                final int number,
+                final String string,
+                final URI uri,
+                final List<String> list) {
             super(number, string, uri);
             this.number = number;
             this.string = string;
             this.uri = uri;
+            this.list = list;
         }
 
         @Override
@@ -38,6 +47,9 @@ public class FooBuilder {
         public URI uri() {
             return uri;
         }
+
+        @Override
+        public List<String> list() { return list; }
 
         @Override
         public String toString() {
@@ -58,6 +70,7 @@ public class FooBuilder {
         number = from.number();
         string = from.string();
         uri = from.uri();
+        list = from.list();
     }
 
     public FooBuilder number(int number) {
@@ -75,7 +88,12 @@ public class FooBuilder {
         return this;
     }
 
+    public FooBuilder list(List<String> list) {
+        this.list = list;
+        return this;
+    }
+
     public Foo build() {
-        return new FooImpl(number, string, uri);
+        return new FooImpl(number, string, uri, list);
     }
 }
